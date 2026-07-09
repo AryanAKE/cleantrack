@@ -1,0 +1,64 @@
+<aside class="sidebar" id="sidebar">
+
+  <!-- Brand -->
+  <div class="sidebar-brand">
+    <div class="sidebar-brand-icon">
+      <i class="fa-solid fa-recycle"></i>
+    </div>
+    <div>
+      <div class="sidebar-brand-text">CleanTrack</div>
+      <div class="sidebar-brand-sub">NextGen v1.0</div>
+    </div>
+  </div>
+
+  <!-- Navigation -->
+  <nav class="sidebar-nav">
+    <div class="sidebar-section-label">Monitor</div>
+
+    <a href="/admin" class="sidebar-nav-item <%= active === 'dashboard' ? 'active' : '' %>">
+      <i class="fa-solid fa-chart-pie"></i>
+      Dashboard
+    </a>
+
+    <a href="#fleet-map" class="sidebar-nav-item" onclick="scrollToSection('fleet-map')">
+      <i class="fa-solid fa-map-location-dot"></i>
+      Fleet Map
+    </a>
+
+    <a href="#reports-section" class="sidebar-nav-item" onclick="scrollToSection('reports-section')">
+      <i class="fa-solid fa-triangle-exclamation"></i>
+      Reports
+      <% if (typeof pendingReportCount !== 'undefined' && pendingReportCount > 0) { %>
+        <span class="badge badge-danger" style="margin-left:auto"><%= pendingReportCount %></span>
+      <% } %>
+    </a>
+
+    <div class="sidebar-section-label">Field</div>
+
+    <a href="/collector" class="sidebar-nav-item <%= active === 'collector' ? 'active' : '' %>">
+      <i class="fa-solid fa-truck-fast"></i>
+      Collector App
+    </a>
+
+    <a href="/citizen" class="sidebar-nav-item <%= active === 'citizen' ? 'active' : '' %>">
+      <i class="fa-solid fa-camera"></i>
+      Citizen Portal
+    </a>
+
+  </nav>
+
+  <!-- Footer / User -->
+  <div class="sidebar-footer">
+    <div class="sidebar-user">
+      <div class="sidebar-avatar">A</div>
+      <div class="sidebar-user-info">
+        <div class="sidebar-user-name">Admin</div>
+        <div class="sidebar-user-role">Administrator</div>
+      </div>
+      <a href="/" title="Logout" style="color:var(--text-tertiary);font-size:14px;padding:6px;border-radius:8px;transition:color .15s;text-decoration:none" onmouseover="this.style.color='#ef4444'" onmouseout="this.style.color='var(--text-tertiary)'">
+        <i class="fa-solid fa-right-from-bracket"></i>
+      </a>
+    </div>
+  </div>
+
+</aside>
