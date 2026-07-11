@@ -7,7 +7,7 @@
     </div>
     <div>
       <div class="sidebar-brand-text">CleanTrack</div>
-      <div class="sidebar-brand-sub">NextGen v1.0</div>
+      <div class="sidebar-brand-sub">v2.0 · NextGen</div>
     </div>
   </div>
 
@@ -16,7 +16,7 @@
     <div class="sidebar-section-label">Monitor</div>
 
     <a href="/admin" class="sidebar-nav-item <%= active === 'dashboard' ? 'active' : '' %>">
-      <i class="fa-solid fa-chart-pie"></i>
+      <i class="fa-solid fa-gauge-high"></i>
       Dashboard
     </a>
 
@@ -26,7 +26,7 @@
     </a>
 
     <a href="#reports-section" class="sidebar-nav-item" onclick="scrollToSection('reports-section')">
-      <i class="fa-solid fa-triangle-exclamation"></i>
+      <i class="fa-solid fa-circle-exclamation"></i>
       Reports
       <% if (typeof pendingReportCount !== 'undefined' && pendingReportCount > 0) { %>
         <span class="badge badge-danger" style="margin-left:auto"><%= pendingReportCount %></span>
@@ -41,7 +41,7 @@
     </a>
 
     <a href="/citizen" class="sidebar-nav-item <%= active === 'citizen' ? 'active' : '' %>">
-      <i class="fa-solid fa-camera"></i>
+      <i class="fa-solid fa-bullhorn"></i>
       Citizen Portal
     </a>
 
@@ -55,7 +55,10 @@
         <div class="sidebar-user-name">Admin</div>
         <div class="sidebar-user-role">Administrator</div>
       </div>
-      <a href="/" title="Logout" style="color:var(--text-tertiary);font-size:14px;padding:6px;border-radius:8px;transition:color .15s;text-decoration:none" onmouseover="this.style.color='#ef4444'" onmouseout="this.style.color='var(--text-tertiary)'">
+      <a href="/" title="Logout"
+         style="color:var(--text-tertiary);font-size:14px;padding:6px;border-radius:8px;transition:color .15s;text-decoration:none"
+         onmouseover="this.style.color='var(--red-400)'"
+         onmouseout="this.style.color='var(--text-tertiary)'">
         <i class="fa-solid fa-right-from-bracket"></i>
       </a>
     </div>

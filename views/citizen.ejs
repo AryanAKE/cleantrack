@@ -4,12 +4,14 @@
 
   <!-- ── HEADER ──────────────────────────────────────────────── -->
   <div class="citizen-header">
-    <a href="/" style="width:36px;height:36px;border-radius:10px;background:rgba(255,255,255,.06);border:1px solid var(--border-subtle);display:flex;align-items:center;justify-content:center;color:var(--text-secondary);text-decoration:none;transition:all .15s;flex-shrink:0"
-       onmouseover="this.style.background='rgba(255,255,255,.1)'" onmouseout="this.style.background='rgba(255,255,255,.06)'">
+    <a href="/"
+       style="width:36px;height:36px;border-radius:10px;background:rgba(139,92,246,.08);border:1px solid rgba(139,92,246,.2);display:flex;align-items:center;justify-content:center;color:var(--violet-400);text-decoration:none;transition:all .15s;flex-shrink:0"
+       onmouseover="this.style.background='rgba(139,92,246,.18)'"
+       onmouseout="this.style.background='rgba(139,92,246,.08)'">
       <i class="fa-solid fa-arrow-left" style="font-size:13px"></i>
     </a>
     <div>
-      <h1 style="font-size:17px;font-weight:800;color:var(--text-primary);letter-spacing:-.3px">Report an Issue</h1>
+      <h1 style="font-size:17px;font-weight:700;color:var(--text-primary);letter-spacing:-.3px;font-family:'Space Grotesk',sans-serif">Report an Issue</h1>
       <p style="font-size:11px;color:var(--text-tertiary);margin-top:1px">Help keep the city clean</p>
     </div>
     <div style="margin-left:auto">
@@ -21,13 +23,13 @@
   <div class="citizen-body">
 
     <!-- SUCCESS STATE (hidden by default) -->
-    <div id="success-screen" class="hidden" style="text-align:center;padding:60px 20px">
-      <div style="width:80px;height:80px;background:rgba(16,185,129,.15);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:36px;color:var(--emerald-400);margin:0 auto 20px;animation:bounceIn .5s cubic-bezier(0.34,1.56,0.64,1)">
+    <div id="success-screen" class="hidden" style="text-align:center;padding:64px 20px">
+      <div style="width:88px;height:88px;background:var(--grad-brand);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:38px;color:white;margin:0 auto 22px;animation:bounceIn .5s cubic-bezier(0.34,1.56,0.64,1);box-shadow:0 0 40px rgba(139,92,246,.4)">
         <i class="fa-solid fa-circle-check"></i>
       </div>
-      <h2 style="font-size:22px;font-weight:800;color:var(--text-primary);margin-bottom:8px">Report Submitted!</h2>
+      <h2 style="font-size:24px;font-weight:700;color:var(--text-primary);margin-bottom:8px;font-family:'Space Grotesk',sans-serif">Report Submitted!</h2>
       <p style="color:var(--text-secondary);font-size:14px;margin-bottom:8px">Your report has been received and assigned to the nearest team.</p>
-      <p style="color:var(--text-tertiary);font-size:12px;margin-bottom:28px">Typical resolution time: <strong style="color:var(--emerald-400)">2–4 hours</strong></p>
+      <p style="color:var(--text-tertiary);font-size:12px;margin-bottom:30px">Typical resolution time: <strong style="color:var(--violet-400)">2–4 hours</strong></p>
       <div class="flex gap-3 justify-center">
         <button class="btn btn-secondary" onclick="resetForm()"><i class="fa-solid fa-plus"></i> Submit Another</button>
         <a href="/" class="btn btn-primary"><i class="fa-solid fa-house"></i> Back to Home</a>
@@ -51,27 +53,29 @@
 
         <!-- Issue Type -->
         <div class="form-group">
-          <label class="form-label">Issue Type <span style="color:var(--red-400)">*</span></label>
+          <label class="form-label">Issue Type <span style="color:var(--pink-400)">*</span></label>
           <div class="issue-grid">
             <button type="button" class="issue-btn" data-issue="Overflowing Bin" onclick="selectIssue(this)">
-              <i class="fa-solid fa-dumpster-fire" style="display:block;font-size:18px;margin-bottom:6px;color:var(--amber-400)"></i>
+              <i class="fa-solid fa-dumpster-fire" style="display:block;font-size:20px;margin-bottom:8px;color:var(--amber-400)"></i>
               Overflowing Bin
             </button>
             <button type="button" class="issue-btn" data-issue="Missed Collection" onclick="selectIssue(this)">
-              <i class="fa-solid fa-truck-ramp-box" style="display:block;font-size:18px;margin-bottom:6px;color:var(--red-400)"></i>
+              <i class="fa-solid fa-truck-ramp-box" style="display:block;font-size:20px;margin-bottom:8px;color:var(--pink-400)"></i>
               Missed Collection
             </button>
             <button type="button" class="issue-btn" data-issue="Damaged Bin" onclick="selectIssue(this)">
-              <i class="fa-solid fa-trash-can" style="display:block;font-size:18px;margin-bottom:6px;color:var(--blue-400)"></i>
+              <i class="fa-solid fa-trash-can" style="display:block;font-size:20px;margin-bottom:8px;color:var(--cyan-400)"></i>
               Damaged Bin
             </button>
             <button type="button" class="issue-btn" data-issue="Illegal Dumping" onclick="selectIssue(this)">
-              <i class="fa-solid fa-ban" style="display:block;font-size:18px;margin-bottom:6px;color:var(--text-secondary)"></i>
+              <i class="fa-solid fa-ban" style="display:block;font-size:20px;margin-bottom:8px;color:var(--red-400)"></i>
               Illegal Dumping
             </button>
           </div>
           <input type="hidden" id="selected-issue" name="issueType">
-          <p id="issue-error" style="font-size:11px;color:var(--red-400);margin-top:6px;display:none"><i class="fa-solid fa-circle-exclamation" style="margin-right:4px"></i>Please select an issue type.</p>
+          <p id="issue-error" style="font-size:11px;color:var(--pink-400);margin-top:6px;display:none">
+            <i class="fa-solid fa-circle-exclamation" style="margin-right:4px"></i>Please select an issue type.
+          </p>
         </div>
 
         <!-- Description -->
@@ -88,7 +92,7 @@
             <span id="photo-label">Tap to upload photo</span>
           </div>
           <input type="file" id="photo-input" accept="image/*" capture="environment" style="display:none" onchange="handlePhotoSelect(this)">
-          <img id="photo-preview" src="" alt="Preview" style="display:none;width:100%;border-radius:12px;margin-top:10px;max-height:200px;object-fit:cover;border:1px solid var(--border-subtle)">
+          <img id="photo-preview" src="" alt="Preview" style="display:none;width:100%;border-radius:13px;margin-top:10px;max-height:210px;object-fit:cover;border:1px solid var(--border-normal)">
         </div>
 
         <!-- Location -->

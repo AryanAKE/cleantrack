@@ -13,7 +13,7 @@
       </div>
       <div class="flex items-center gap-3">
         <span class="badge-live"><span class="live-dot"></span> Live</span>
-        <button class="btn btn-secondary btn-sm" onclick="refreshStats()">
+        <button class="btn btn-ghost btn-sm" onclick="refreshStats()">
           <i class="fa-solid fa-rotate-right"></i> Refresh
         </button>
         <a href="/" class="btn btn-danger btn-sm">
@@ -28,34 +28,34 @@
       <!-- KPI STATS GRID -->
       <div class="stats-grid stagger" id="stats-grid">
 
-        <div class="stat-card green">
-          <div class="stat-icon green"><i class="fa-solid fa-route"></i></div>
+        <div class="stat-card violet">
+          <div class="stat-icon violet"><i class="fa-solid fa-route"></i></div>
           <div class="stat-label">Route Completion</div>
-          <div class="stat-value" id="stat-route"><%= stats.routeCompletion %>%</div>
+          <div class="stat-value text-gradient" id="stat-route"><%= stats.routeCompletion %>%</div>
           <div class="progress-bar">
-            <div class="progress-fill green" style="width:<%= stats.routeCompletion %>%" id="prog-route"></div>
+            <div class="progress-fill violet" style="width:<%= stats.routeCompletion %>%" id="prog-route"></div>
           </div>
           <div class="stat-trend up"><i class="fa-solid fa-arrow-trend-up"></i> +4% from yesterday</div>
         </div>
 
-        <div class="stat-card red">
-          <div class="stat-icon red"><i class="fa-solid fa-triangle-exclamation"></i></div>
+        <div class="stat-card pink">
+          <div class="stat-icon pink"><i class="fa-solid fa-circle-exclamation"></i></div>
           <div class="stat-label">Open Complaints</div>
-          <div class="stat-value" style="color:var(--red-400)" id="stat-complaints"><%= stats.complaints %></div>
+          <div class="stat-value" style="color:var(--pink-400)" id="stat-complaints"><%= stats.complaints %></div>
           <div class="progress-bar">
-            <div class="progress-fill red" style="width:<%= Math.min(stats.complaints * 10, 100) %>%" id="prog-complaints"></div>
+            <div class="progress-fill pink" style="width:<%= Math.min(stats.complaints * 10, 100) %>%" id="prog-complaints"></div>
           </div>
           <div class="stat-trend down" id="complaints-trend">
             <i class="fa-solid fa-circle-exclamation"></i> Requires attention
           </div>
         </div>
 
-        <div class="stat-card blue">
-          <div class="stat-icon blue"><i class="fa-solid fa-truck"></i></div>
+        <div class="stat-card cyan">
+          <div class="stat-icon cyan"><i class="fa-solid fa-truck"></i></div>
           <div class="stat-label">Trucks Active</div>
-          <div class="stat-value" style="color:var(--blue-400)" id="stat-trucks"><%= stats.trucksActive %></div>
+          <div class="stat-value" style="color:var(--cyan-400)" id="stat-trucks"><%= stats.trucksActive %></div>
           <div class="progress-bar">
-            <div class="progress-fill blue" style="width:80%"></div>
+            <div class="progress-fill cyan" style="width:80%"></div>
           </div>
           <div class="stat-trend up"><i class="fa-solid fa-signal"></i> All on-route</div>
         </div>
@@ -78,7 +78,10 @@
         <!-- GPS MAP -->
         <div class="card" style="margin-bottom:0">
           <div class="section-header" style="margin-bottom:16px">
-            <h2 class="section-title"><i class="fa-solid fa-map-location-dot" style="color:var(--blue-400);margin-right:8px;font-size:13px"></i>Fleet GPS Map</h2>
+            <h2 class="section-title">
+              <i class="fa-solid fa-map-location-dot" style="color:var(--violet-400);margin-right:9px;font-size:13px"></i>
+              Fleet GPS Map
+            </h2>
             <span class="badge-live"><span class="live-dot"></span> Real-Time</span>
           </div>
 
@@ -92,14 +95,14 @@
             <div class="map-road-v" style="left:66%"></div>
 
             <!-- Bin markers -->
-            <div style="position:absolute;top:28%;left:40%;width:8px;height:8px;background:var(--emerald-400);border-radius:50%;border:2px solid white;box-shadow:0 0 6px rgba(16,185,129,0.8)"></div>
-            <div style="position:absolute;top:55%;left:20%;width:8px;height:8px;background:var(--amber-400);border-radius:50%;border:2px solid white;box-shadow:0 0 6px rgba(245,158,11,0.8)"></div>
-            <div style="position:absolute;top:72%;left:58%;width:8px;height:8px;background:var(--red-400);border-radius:50%;border:2px solid white;box-shadow:0 0 6px rgba(239,68,68,0.8)"></div>
+            <div style="position:absolute;top:28%;left:40%;width:9px;height:9px;background:var(--green-400);border-radius:50%;border:2px solid white;box-shadow:0 0 8px rgba(74,222,128,0.8)"></div>
+            <div style="position:absolute;top:55%;left:20%;width:9px;height:9px;background:var(--amber-400);border-radius:50%;border:2px solid white;box-shadow:0 0 8px rgba(251,191,36,0.8)"></div>
+            <div style="position:absolute;top:72%;left:58%;width:9px;height:9px;background:var(--red-400);border-radius:50%;border:2px solid white;box-shadow:0 0 8px rgba(248,113,113,0.8)"></div>
 
             <!-- Truck 1 (active) -->
             <div class="map-truck" style="top:30%;left:35%">
-              <div class="map-truck-pulse" style="background:rgba(16,185,129,0.3)"></div>
-              <div class="map-truck-icon" style="background:var(--emerald-600)">
+              <div class="map-truck-pulse" style="background:rgba(139,92,246,0.3)"></div>
+              <div class="map-truck-icon" style="background:var(--violet-600)">
                 <i class="fa-solid fa-truck" style="font-size:11px"></i>
               </div>
               <div class="map-truck-label">Truck #802</div>
@@ -115,18 +118,18 @@
 
             <!-- Truck 3 -->
             <div class="map-truck" style="top:15%;right:18%">
-              <div class="map-truck-pulse" style="background:rgba(59,130,246,0.3)"></div>
-              <div class="map-truck-icon" style="background:var(--blue-600)">
+              <div class="map-truck-pulse" style="background:rgba(6,182,212,0.3)"></div>
+              <div class="map-truck-icon" style="background:var(--cyan-600)">
                 <i class="fa-solid fa-truck" style="font-size:11px"></i>
               </div>
               <div class="map-truck-label">Truck #211</div>
             </div>
 
             <!-- Legend -->
-            <div style="position:absolute;bottom:12px;left:12px;background:rgba(10,15,30,0.85);border:1px solid var(--border-subtle);border-radius:8px;padding:8px 12px;backdrop-filter:blur(8px)">
-              <div style="font-size:10px;font-weight:700;color:var(--text-tertiary);text-transform:uppercase;letter-spacing:.5px;margin-bottom:6px">Legend</div>
-              <div style="display:flex;gap:12px">
-                <div style="display:flex;align-items:center;gap:5px;font-size:10px;color:var(--emerald-400);font-weight:600"><span style="width:8px;height:8px;background:var(--emerald-400);border-radius:50%;display:inline-block"></span>Collected</div>
+            <div style="position:absolute;bottom:12px;left:12px;background:rgba(7,7,15,0.88);border:1px solid var(--border-normal);border-radius:10px;padding:9px 13px;backdrop-filter:blur(10px)">
+              <div style="font-size:10px;font-weight:700;color:var(--text-tertiary);text-transform:uppercase;letter-spacing:.6px;margin-bottom:7px">Legend</div>
+              <div style="display:flex;gap:13px">
+                <div style="display:flex;align-items:center;gap:5px;font-size:10px;color:var(--green-400);font-weight:600"><span style="width:8px;height:8px;background:var(--green-400);border-radius:50%;display:inline-block"></span>Collected</div>
                 <div style="display:flex;align-items:center;gap:5px;font-size:10px;color:var(--amber-400);font-weight:600"><span style="width:8px;height:8px;background:var(--amber-400);border-radius:50%;display:inline-block"></span>In-Progress</div>
                 <div style="display:flex;align-items:center;gap:5px;font-size:10px;color:var(--red-400);font-weight:600"><span style="width:8px;height:8px;background:var(--red-400);border-radius:50%;display:inline-block"></span>Missed</div>
               </div>
@@ -137,20 +140,23 @@
         <!-- ACTIVITY FEED -->
         <div class="card" style="margin-bottom:0">
           <div class="section-header">
-            <h2 class="section-title"><i class="fa-solid fa-bolt" style="color:var(--amber-400);margin-right:8px;font-size:13px"></i>Live Verification Feed</h2>
+            <h2 class="section-title">
+              <i class="fa-solid fa-bolt" style="color:var(--amber-400);margin-right:9px;font-size:13px"></i>
+              Live Verification Feed
+            </h2>
             <span class="badge badge-neutral"><%= recentActivity.length %> events</span>
           </div>
 
           <div id="activity-feed">
             <% if (recentActivity.length === 0) { %>
-              <div style="text-align:center;padding:32px 0;color:var(--text-tertiary);font-size:13px">
-                <i class="fa-solid fa-clock-rotate-left" style="font-size:24px;margin-bottom:8px;display:block;opacity:.4"></i>
+              <div style="text-align:center;padding:36px 0;color:var(--text-tertiary);font-size:13px">
+                <i class="fa-solid fa-clock-rotate-left" style="font-size:26px;margin-bottom:10px;display:block;opacity:.3"></i>
                 No activity yet today
               </div>
             <% } else { %>
               <% recentActivity.forEach((bin, i) => { %>
                 <div class="feed-item" style="animation-delay:<%= i * 0.05 %>s">
-                  <div class="feed-icon" style="background:rgba(16,185,129,.12);color:var(--emerald-400)">
+                  <div class="feed-icon" style="background:rgba(74,222,128,.1);color:var(--green-400)">
                     <i class="fa-solid fa-circle-check"></i>
                   </div>
                   <div class="feed-content">
@@ -161,7 +167,7 @@
                     </div>
                   </div>
                   <div class="feed-time">
-                    <% 
+                    <%
                       const diff = Math.round((Date.now() - new Date(bin.collectedAt).getTime()) / 60000);
                       const display = diff < 60 ? diff + 'm ago' : Math.round(diff/60) + 'h ago';
                     %>
@@ -178,16 +184,19 @@
       <!-- REPORTS TABLE -->
       <div class="card" id="reports-section" style="margin-top:20px">
         <div class="section-header">
-          <h2 class="section-title"><i class="fa-solid fa-triangle-exclamation" style="color:var(--red-400);margin-right:8px;font-size:13px"></i>Citizen Reports</h2>
+          <h2 class="section-title">
+            <i class="fa-solid fa-circle-exclamation" style="color:var(--pink-400);margin-right:9px;font-size:13px"></i>
+            Citizen Reports
+          </h2>
           <div class="flex gap-2">
             <span class="badge badge-danger"><%= pendingReportCount %> pending</span>
-            <a href="/citizen" class="btn btn-secondary btn-sm">+ New</a>
+            <a href="/citizen" class="btn btn-ghost btn-sm">+ New</a>
           </div>
         </div>
 
         <% if (reports.length === 0) { %>
-          <div style="text-align:center;padding:40px 0;color:var(--text-tertiary);font-size:13px">
-            <i class="fa-solid fa-inbox" style="font-size:28px;margin-bottom:8px;display:block;opacity:.3"></i>
+          <div style="text-align:center;padding:44px 0;color:var(--text-tertiary);font-size:13px">
+            <i class="fa-solid fa-inbox" style="font-size:30px;margin-bottom:10px;display:block;opacity:.25"></i>
             No reports submitted yet
           </div>
         <% } else { %>
@@ -215,7 +224,7 @@
                       <%= report.description || '—' %>
                     </td>
                     <td style="font-size:12px;color:var(--text-secondary)">
-                      <i class="fa-solid fa-location-dot" style="color:var(--red-400);margin-right:4px"></i>
+                      <i class="fa-solid fa-location-dot" style="color:var(--pink-400);margin-right:4px"></i>
                       <%= report.location %>
                     </td>
                     <td>
