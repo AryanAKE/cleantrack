@@ -591,7 +591,7 @@ img { max-width: 100%; display: block; }
 .progress-fill.pink   { background: linear-gradient(90deg, var(--pink-500), var(--pink-400)); }
 .progress-fill.amber  { background: linear-gradient(90deg, var(--amber-500), var(--amber-400)); }
 
-/* ── Admin Grid (Map + Feed) ──────────────────────────── */
+/* ── Admin Grid (Map + Feed) ──────────────────────── */
 .admin-grid {
   display: grid;
   grid-template-columns: 1fr 340px;
@@ -954,7 +954,6 @@ tbody tr:last-child td { border-bottom: none; }
 .role-btn:hover .role-btn-arrow { transform: translateX(5px); }
 
 .role-btn.admin:hover     { border-color: rgba(139,92,246,.4); box-shadow: 0 8px 32px rgba(139,92,246,.15); }
-.role-btn.admin           { }
 .role-btn.admin .role-btn-icon { background: rgba(139,92,246,.12); color: var(--violet-400); }
 .role-btn.admin .role-btn-label { color: var(--violet-400); }
 .role-btn.admin:hover .role-btn-arrow { color: var(--violet-400); }
