@@ -17,7 +17,7 @@ export default function LandingPage({ onThemeToggle, theme }) {
             <i className="fa-solid fa-recycle"></i>
           </div>
           <h1 className="login-brand">CleanTrack</h1>
-          <p className="login-tagline">Smart Waste Collection · Verification Platform</p>
+          <p className="login-tagline">Smart Waste Management · Real-Time Verification Platform</p>
 
           <div className="login-features stagger">
             <div className="login-feature">
