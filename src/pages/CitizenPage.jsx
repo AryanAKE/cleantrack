@@ -93,7 +93,7 @@ export default function CitizenPage({ onThemeToggle, theme, showToast }) {
         </Link>
         <div>
           <h1 style={{ fontSize: '17px', fontWeight: 700, color: 'var(--text-primary)', letterSpacing: '-.3px', fontFamily: "'Space Grotesk',sans-serif" }}>Report an Issue</h1>
-          <p style={{ fontSize: '11px', color: 'var(--text-tertiary)', marginTop: '1px' }}>Help keep the city clean</p>
+          <p style={{ fontSize: '11px', color: 'var(--text-tertiary)', marginTop: '1px' }}>Help keep your city clean & safe</p>
         </div>
         <div style={{ marginLeft: 'auto' }}>
           <span className="badge badge-info"><i className="fa-solid fa-shield-halved" style={{ marginRight: '3px' }}></i>Public</span>
