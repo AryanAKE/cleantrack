@@ -1,16 +1,41 @@
-# React + Vite
+# CleanTrack — Smart Waste Management Platform
 
-This template provides a minimal setup to get React working in Vite with HMR and some Oxlint rules.
+> Real-time waste collection verification system with QR scanning, GPS tracking, and citizen reporting.
 
-Currently, two official plugins are available:
+## Features
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+- 🗺️ **Live Fleet GPS Map** — Track garbage trucks in real-time against planned routes
+- 📱 **QR-Based Bin Verification** — Collectors scan bins to create tamper-proof proof of collection
+- 📊 **Admin Operations Dashboard** — Monitor KPIs, completion rates, and open complaints
+- 📣 **Citizen Reporting Portal** — Public portal to report overflowing or missed bins
 
-## React Compiler
+## Tech Stack
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+- **Frontend:** React 19, React Router v7
+- **Build Tool:** Vite 8
+- **Styling:** Vanilla CSS with custom design system
 
-## Expanding the Oxlint configuration
+## Getting Started
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and Oxlint's TypeScript related rules in your project.
+```bash
+# Install dependencies
+npm install
+
+# Start development server
+npm run dev
+```
+
+Open [http://localhost:5173](http://localhost:5173) in your browser.
+
+## Portals
+
+| Portal | Route | Description |
+|--------|-------|-------------|
+| Landing | `/` | Role selection page |
+| Admin | `/admin` | Operations dashboard for managers |
+| Collector | `/collector` | Field app for garbage truck operators |
+| Citizen | `/citizen` | Public reporting portal |
+
+---
+
+© 2026 CleanTrack Team · v1.0.0
