@@ -56,7 +56,7 @@ export default function AdminPage({ onThemeToggle, theme, showToast }) {
         {/* ── PAGE HEADER ── */}
         <div className="page-header">
           <div className="page-header-left">
-            <h1 className="page-title">Live Dashboard</h1>
+            <h1 className="page-title">Operations Dashboard</h1>
             <p className="page-subtitle">{formatDate()}</p>
           </div>
           <div className="flex items-center gap-3">
