@@ -107,7 +107,7 @@ export default function LandingPage({ onThemeToggle, theme }) {
 
           <p style={{ textAlign: 'center', fontSize: '11px', color: 'var(--text-tertiary)', marginTop: '30px' }}>
             <i className="fa-solid fa-shield-halved" style={{ color: 'var(--violet-500)', marginRight: '5px' }}></i>
-            Secured by CleanTrack &nbsp;·&nbsp; v2.0
+            Secured by CleanTrack &nbsp;·&nbsp; v2.1
           </p>
         </div>
 
