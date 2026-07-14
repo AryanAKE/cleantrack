@@ -163,9 +163,23 @@ export default function CitizenPage({ onThemeToggle, theme, showToast }) {
                   id="description"
                   placeholder="Describe the issue in detail — e.g. 'Bin at the gate has been overflowing since Monday…'"
                   rows={3}
+                  maxLength={280}
                   value={description}
                   onChange={e => setDescription(e.target.value)}
                 />
+                <div style={{ display: 'flex', justifyContent: 'flex-end', marginTop: '5px' }}>
+                  <span style={{
+                    fontSize: '11px',
+                    fontWeight: 600,
+                    color: description.length >= 260
+                      ? 'var(--pink-400)'
+                      : description.length >= 200
+                        ? 'var(--amber-400)'
+                        : 'var(--text-tertiary)',
+                  }}>
+                    {description.length} / 280
+                  </span>
+                </div>
               </div>
 
               {/* Photo Upload */}
