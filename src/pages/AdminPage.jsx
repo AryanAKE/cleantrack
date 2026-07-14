@@ -24,6 +24,7 @@ export default function AdminPage({ onThemeToggle, theme, showToast }) {
   const navigate = useNavigate();
   const [stats, setStats] = useState(STATS);
   const [reports, setReports] = useState(REPORTS);
+  const [reportSearch, setReportSearch] = useState('');
   const [isRefreshing, setIsRefreshing] = useState(false);
 
   const pendingCount = reports.filter(r => r.status === 'pending').length;
@@ -236,62 +237,90 @@ export default function AdminPage({ onThemeToggle, theme, showToast }) {
               </div>
             </div>
 
+            {/* Search Bar */}
+            <div style={{ marginBottom: '14px' }}>
+              <div style={{ position: 'relative' }}>
+                <i className="fa-solid fa-magnifying-glass" style={{ position: 'absolute', left: '12px', top: '50%', transform: 'translateY(-50%)', color: 'var(--text-tertiary)', fontSize: '13px', pointerEvents: 'none' }}></i>
+                <input
+                  type="text"
+                  className="form-control"
+                  placeholder="Search by issue type, description, or location…"
+                  value={reportSearch}
+                  onChange={e => setReportSearch(e.target.value)}
+                  style={{ paddingLeft: '36px', fontSize: '13px' }}
+                />
+              </div>
+            </div>
+
             {reports.length === 0 ? (
               <div style={{ textAlign: 'center', padding: '44px 0', color: 'var(--text-tertiary)', fontSize: '13px' }}>
                 <i className="fa-solid fa-inbox" style={{ fontSize: '30px', marginBottom: '10px', display: 'block', opacity: .25 }}></i>
                 No reports submitted yet
               </div>
-            ) : (
-              <div className="table-container">
-                <table>
-                  <thead>
-                    <tr>
-                      <th>Type</th>
-                      <th>Description</th>
-                      <th>Location</th>
-                      <th>Status</th>
-                      <th>Submitted</th>
-                      <th>Action</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    {reports.map(report => (
-                      <tr key={report.id} id={`row-${report.id}`}>
-                        <td>
-                          <span className={getIssueBadgeClass(report.issueType)}>
-                            {report.issueType}
-                          </span>
-                        </td>
-                        <td style={{ maxWidth: '220px', overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap', color: 'var(--text-secondary)', fontSize: '12px' }}>
-                          {report.description || '—'}
-                        </td>
-                        <td style={{ fontSize: '12px', color: 'var(--text-secondary)' }}>
-                          <i className="fa-solid fa-location-dot" style={{ color: 'var(--pink-400)', marginRight: '4px' }}></i>
-                          {report.location}
-                        </td>
-                        <td>
-                          <span className={`badge ${report.status === 'pending' ? 'badge-warning' : 'badge-success'}`}>
-                            {report.status === 'pending' ? '⏳ Pending' : '✓ Resolved'}
-                          </span>
-                        </td>
-                        <td style={{ fontSize: '11px', color: 'var(--text-tertiary)' }}>
-                          {new Date(report.submittedAt).toLocaleString('en-IN', { dateStyle: 'short', timeStyle: 'short' })}
-                        </td>
-                        <td>
-                          {report.status === 'pending' ? (
-                            <button className="btn btn-primary btn-sm" onClick={() => handleResolve(report.id)}>
-                              Resolve
-                            </button>
-                          ) : (
-                            <span style={{ fontSize: '11px', color: 'var(--text-tertiary)' }}>Closed</span>
-                          )}
-                        </td>
+            ) : (() => {
+              const q = reportSearch.toLowerCase();
+              const filtered = reports.filter(r =>
+                r.issueType.toLowerCase().includes(q) ||
+                (r.description || '').toLowerCase().includes(q) ||
+                r.location.toLowerCase().includes(q)
+              );
+              return filtered.length === 0 ? (
+                <div style={{ textAlign: 'center', padding: '44px 0', color: 'var(--text-tertiary)', fontSize: '13px' }}>
+                  <i className="fa-solid fa-search" style={{ fontSize: '26px', marginBottom: '10px', display: 'block', opacity: .25 }}></i>
+                  No reports match your search
+                </div>
+              ) : (
+                <div className="table-container">
+                  <table>
+                    <thead>
+                      <tr>
+                        <th>Type</th>
+                        <th>Description</th>
+                        <th>Location</th>
+                        <th>Status</th>
+                        <th>Submitted</th>
+                        <th>Action</th>
                       </tr>
-                    ))}
-                  </tbody>
-                </table>
-              </div>
-            )}
+                    </thead>
+                    <tbody>
+                      {filtered.map(report => (
+                        <tr key={report.id} id={`row-${report.id}`}>
+                          <td>
+                            <span className={getIssueBadgeClass(report.issueType)}>
+                              {report.issueType}
+                            </span>
+                          </td>
+                          <td style={{ maxWidth: '220px', overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap', color: 'var(--text-secondary)', fontSize: '12px' }}>
+                            {report.description || '—'}
+                          </td>
+                          <td style={{ fontSize: '12px', color: 'var(--text-secondary)' }}>
+                            <i className="fa-solid fa-location-dot" style={{ color: 'var(--pink-400)', marginRight: '4px' }}></i>
+                            {report.location}
+                          </td>
+                          <td>
+                            <span className={`badge ${report.status === 'pending' ? 'badge-warning' : 'badge-success'}`}>
+                              {report.status === 'pending' ? '⏳ Pending' : '✓ Resolved'}
+                            </span>
+                          </td>
+                          <td style={{ fontSize: '11px', color: 'var(--text-tertiary)' }}>
+                            {new Date(report.submittedAt).toLocaleString('en-IN', { dateStyle: 'short', timeStyle: 'short' })}
+                          </td>
+                          <td>
+                            {report.status === 'pending' ? (
+                              <button className="btn btn-primary btn-sm" onClick={() => handleResolve(report.id)}>
+                                Resolve
+                              </button>
+                            ) : (
+                              <span style={{ fontSize: '11px', color: 'var(--text-tertiary)' }}>Closed</span>
+                            )}
+                          </td>
+                        </tr>
+                      ))}
+                    </tbody>
+                  </table>
+                </div>
+              );
+            })()}
           </div>
 
         </div>{/* /.page-body */}
