@@ -112,6 +112,27 @@ export default function CollectorPage({ onThemeToggle, theme, showToast }) {
             <div className="collector-stat-label">Time</div>
           </div>
         </div>
+
+        {/* Progress Bar */}
+        <div style={{ marginTop: '14px' }}>
+          <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '6px' }}>
+            <span style={{ fontSize: '10px', fontWeight: 700, color: 'var(--text-tertiary)', textTransform: 'uppercase', letterSpacing: '1px' }}>Shift Progress</span>
+            <span style={{ fontSize: '11px', fontWeight: 700, color: doneCount === BINS.length ? 'var(--green-400)' : 'var(--violet-400)' }}>
+              {Math.round((doneCount / BINS.length) * 100)}%
+            </span>
+          </div>
+          <div style={{ height: '6px', background: 'rgba(255,255,255,0.07)', borderRadius: '10px', overflow: 'hidden' }}>
+            <div
+              style={{
+                height: '100%',
+                width: `${Math.round((doneCount / BINS.length) * 100)}%`,
+                background: doneCount === BINS.length ? 'var(--green-400)' : 'var(--grad-brand)',
+                borderRadius: '10px',
+                transition: 'width 0.5s ease',
+              }}
+            />
+          </div>
+        </div>
       </div>
 
       {/* ── BODY ── */}
