@@ -25,6 +25,7 @@ export default function AdminPage({ onThemeToggle, theme, showToast }) {
   const [stats, setStats] = useState(STATS);
   const [reports, setReports] = useState(REPORTS);
   const [reportSearch, setReportSearch] = useState('');
+  const [reportFilter, setReportFilter] = useState('all');
   const [isRefreshing, setIsRefreshing] = useState(false);
 
   const pendingCount = reports.filter(r => r.status === 'pending').length;
@@ -237,9 +238,9 @@ export default function AdminPage({ onThemeToggle, theme, showToast }) {
               </div>
             </div>
 
-            {/* Search Bar */}
-            <div style={{ marginBottom: '14px' }}>
-              <div style={{ position: 'relative' }}>
+            {/* Search + Filter Bar */}
+            <div style={{ marginBottom: '14px', display: 'flex', gap: '10px', alignItems: 'center' }}>
+              <div style={{ position: 'relative', flex: 1 }}>
                 <i className="fa-solid fa-magnifying-glass" style={{ position: 'absolute', left: '12px', top: '50%', transform: 'translateY(-50%)', color: 'var(--text-tertiary)', fontSize: '13px', pointerEvents: 'none' }}></i>
                 <input
                   type="text"
@@ -250,6 +251,16 @@ export default function AdminPage({ onThemeToggle, theme, showToast }) {
                   style={{ paddingLeft: '36px', fontSize: '13px' }}
                 />
               </div>
+              <select
+                className="form-control"
+                value={reportFilter}
+                onChange={e => setReportFilter(e.target.value)}
+                style={{ fontSize: '13px', width: 'auto', minWidth: '130px', cursor: 'pointer' }}
+              >
+                <option value="all">All Status</option>
+                <option value="pending">⏳ Pending</option>
+                <option value="resolved">✓ Resolved</option>
+              </select>
             </div>
 
             {reports.length === 0 ? (
@@ -259,11 +270,15 @@ export default function AdminPage({ onThemeToggle, theme, showToast }) {
               </div>
             ) : (() => {
               const q = reportSearch.toLowerCase();
-              const filtered = reports.filter(r =>
-                r.issueType.toLowerCase().includes(q) ||
-                (r.description || '').toLowerCase().includes(q) ||
-                r.location.toLowerCase().includes(q)
-              );
+              const filtered = reports.filter(r => {
+                const matchesSearch =
+                  r.issueType.toLowerCase().includes(q) ||
+                  (r.description || '').toLowerCase().includes(q) ||
+                  r.location.toLowerCase().includes(q);
+                const matchesFilter =
+                  reportFilter === 'all' || r.status === reportFilter;
+                return matchesSearch && matchesFilter;
+              });
               return filtered.length === 0 ? (
                 <div style={{ textAlign: 'center', padding: '44px 0', color: 'var(--text-tertiary)', fontSize: '13px' }}>
                   <i className="fa-solid fa-search" style={{ fontSize: '26px', marginBottom: '10px', display: 'block', opacity: .25 }}></i>
