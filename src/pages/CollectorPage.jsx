@@ -76,6 +76,16 @@ export default function CollectorPage({ onThemeToggle, theme, showToast }) {
     showToast('Demo reset', 'info');
   };
 
+  const skipBin = () => {
+    if (!currentBin || flowRunning) return;
+    // Move current bin to end of queue
+    setBins(prev => [...prev.slice(1), { ...prev[0], skipped: true }]);
+    setScanState(SCAN_STATES.IDLE);
+    setStatusText('Step 1: Tap the area above to scan the bin QR code.');
+    setFlowRunning(false);
+    showToast(`Skipped ${currentBin.location} — moved to end of queue`, 'info');
+  };
+
   return (
     <div className="collector-shell">
 
@@ -238,6 +248,16 @@ export default function CollectorPage({ onThemeToggle, theme, showToast }) {
 
               <div style={{ textAlign: 'center', marginTop: '12px' }}>
                 <p style={{ fontSize: '11px', color: 'var(--text-tertiary)' }}>{statusText}</p>
+                {scanState === SCAN_STATES.IDLE && bins.length > 1 && (
+                  <button
+                    style={{ marginTop: '10px', background: 'none', border: '1px solid var(--border-normal)', borderRadius: '8px', padding: '6px 16px', fontSize: '11px', color: 'var(--text-tertiary)', cursor: 'pointer', display: 'inline-flex', alignItems: 'center', gap: '6px', transition: 'all .15s' }}
+                    onClick={skipBin}
+                    onMouseOver={e => { e.currentTarget.style.borderColor = 'var(--amber-400)'; e.currentTarget.style.color = 'var(--amber-400)'; }}
+                    onMouseOut={e => { e.currentTarget.style.borderColor = 'var(--border-normal)'; e.currentTarget.style.color = 'var(--text-tertiary)'; }}
+                  >
+                    <i className="fa-solid fa-forward"></i> Skip Bin
+                  </button>
+                )}
               </div>
             </div>{/* /.task-card */}
 
