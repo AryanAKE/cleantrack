@@ -9,7 +9,7 @@ import CitizenPage from './pages/CitizenPage';
 
 export default function App() {
   const { theme, toggle: toggleTheme } = useTheme();
-  const { toasts, showToast } = useToast();
+  const { toasts, showToast, dismissToast } = useToast();
 
   return (
     <BrowserRouter>
@@ -19,7 +19,7 @@ export default function App() {
         <Route path="/collector" element={<CollectorPage onThemeToggle={toggleTheme} theme={theme} showToast={showToast} />} />
         <Route path="/citizen" element={<CitizenPage onThemeToggle={toggleTheme} theme={theme} showToast={showToast} />} />
       </Routes>
-      <Toast toasts={toasts} />
+      <Toast toasts={toasts} onDismiss={dismissToast} />
     </BrowserRouter>
   );
 }

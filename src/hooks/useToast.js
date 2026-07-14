@@ -11,5 +11,9 @@ export function useToast() {
     }, duration);
   }, []);
 
-  return { toasts, showToast };
+  const dismissToast = useCallback((id) => {
+    setToasts(prev => prev.filter(t => t.id !== id));
+  }, []);
+
+  return { toasts, showToast, dismissToast };
 }
