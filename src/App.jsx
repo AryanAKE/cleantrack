@@ -6,6 +6,7 @@ import LandingPage from './pages/LandingPage';
 import AdminPage from './pages/AdminPage';
 import CollectorPage from './pages/CollectorPage';
 import CitizenPage from './pages/CitizenPage';
+import NotFoundPage from './pages/NotFoundPage';
 
 export default function App() {
   const { theme, toggle: toggleTheme } = useTheme();
@@ -18,6 +19,7 @@ export default function App() {
         <Route path="/admin" element={<AdminPage onThemeToggle={toggleTheme} theme={theme} showToast={showToast} />} />
         <Route path="/collector" element={<CollectorPage onThemeToggle={toggleTheme} theme={theme} showToast={showToast} />} />
         <Route path="/citizen" element={<CitizenPage onThemeToggle={toggleTheme} theme={theme} showToast={showToast} />} />
+        <Route path="*" element={<NotFoundPage />} />
       </Routes>
       <Toast toasts={toasts} onDismiss={dismissToast} />
     </BrowserRouter>
