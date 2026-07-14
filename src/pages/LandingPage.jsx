@@ -56,6 +56,15 @@ export default function LandingPage({ onThemeToggle, theme }) {
                 Public portal for overflowing bins and missed collections.
               </div>
             </div>
+            <div className="login-feature">
+              <div className="login-feature-icon" style={{ background: 'rgba(16,185,129,.12)', color: 'var(--green-400)' }}>
+                <i className="fa-solid fa-bell"></i>
+              </div>
+              <div className="login-feature-text">
+                <strong>Real-Time Alerts</strong>
+                Instant notifications for missed bins and route deviations.
+              </div>
+            </div>
           </div>
         </div>
       </div>
