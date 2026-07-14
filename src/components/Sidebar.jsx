@@ -13,7 +13,7 @@ export default function Sidebar({ pendingCount, onThemeToggle, theme }) {
         </div>
         <div>
           <div className="sidebar-brand-text">CleanTrack</div>
-          <div className="sidebar-brand-sub">v2.0 · NextGen</div>
+          <div className="sidebar-brand-sub">v2.1 · NextGen</div>
         </div>
       </div>
 
@@ -33,6 +33,15 @@ export default function Sidebar({ pendingCount, onThemeToggle, theme }) {
         >
           <i className="fa-solid fa-map-location-dot"></i>
           Fleet Map
+        </a>
+
+        <a
+          href="#activity-feed"
+          className="sidebar-nav-item"
+          onClick={e => { e.preventDefault(); document.getElementById('activity-feed')?.scrollIntoView({ behavior: 'smooth' }); }}
+        >
+          <i className="fa-solid fa-bolt"></i>
+          Activity Feed
         </a>
 
         <a
