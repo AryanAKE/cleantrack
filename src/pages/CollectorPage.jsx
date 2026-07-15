@@ -272,7 +272,12 @@ export default function CollectorPage({ onThemeToggle, theme, showToast }) {
                     <div className="queue-item" key={bin.id} id={`queue-${bin.id}`}>
                       <div className="queue-number">{i + 2}</div>
                       <div className="queue-info">
-                        <div className="queue-name">{bin.location}</div>
+                        <div className="queue-name">
+                          {bin.location}
+                          {bin.skipped && (
+                            <span style={{ marginLeft: '8px', fontSize: '9px', background: 'rgba(251,191,36,.15)', color: 'var(--amber-400)', border: '1px solid rgba(251,191,36,.3)', padding: '1px 6px', borderRadius: '4px', fontWeight: 700, letterSpacing: '.5px' }}>SKIPPED</span>
+                          )}
+                        </div>
                         <div className="queue-meta">{bin.id} &nbsp;·&nbsp; {bin.area}</div>
                       </div>
                       <div className="queue-dist"><i className="fa-solid fa-location-arrow" style={{ marginRight: '4px' }}></i>{bin.distance}</div>
