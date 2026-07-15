@@ -49,6 +49,17 @@ export default function AdminPage({ onThemeToggle, theme, showToast }) {
     showToast('Report marked as resolved', 'success');
   };
 
+  // Keyboard shortcut: press R to refresh (when not typing in an input)
+  useEffect(() => {
+    const onKey = (e) => {
+      if (e.key === 'r' && !['INPUT', 'TEXTAREA', 'SELECT'].includes(document.activeElement?.tagName)) {
+        handleRefresh();
+      }
+    };
+    window.addEventListener('keydown', onKey);
+    return () => window.removeEventListener('keydown', onKey);
+  }, [isRefreshing]);
+
   return (
     <div className="app-shell">
       <Sidebar pendingCount={pendingCount} onThemeToggle={onThemeToggle} theme={theme} />
@@ -63,8 +74,8 @@ export default function AdminPage({ onThemeToggle, theme, showToast }) {
           </div>
           <div className="flex items-center gap-3">
             <span className="badge-live"><span className="live-dot"></span> Live</span>
-            <button className="btn btn-ghost btn-sm" onClick={handleRefresh} disabled={isRefreshing}>
-              <i className={`fa-solid fa-rotate-right${isRefreshing ? ' fa-spin' : ''}`}></i> Refresh
+            <button className="btn btn-ghost btn-sm" onClick={handleRefresh} disabled={isRefreshing} title="Refresh (press R)">
+              <i className={`fa-solid fa-rotate-right${isRefreshing ? ' fa-spin' : ''}`}></i> Refresh <kbd style={{ fontSize: '9px', background: 'rgba(255,255,255,.08)', padding: '1px 5px', borderRadius: '4px', marginLeft: '3px', border: '1px solid var(--border-normal)' }}>R</kbd>
             </button>
             <button className="btn btn-danger btn-sm" onClick={() => navigate('/')}>
               <i className="fa-solid fa-right-from-bracket"></i> Logout
