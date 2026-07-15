@@ -49,6 +49,10 @@ export default function AdminPage({ onThemeToggle, theme, showToast }) {
     showToast('Report marked as resolved', 'success');
   };
 
+  const handleCopyId = (id) => {
+    navigator.clipboard?.writeText(id).then(() => showToast(`Copied ${id} to clipboard`, 'info'));
+  };
+
   // Keyboard shortcut: press R to refresh (when not typing in an input)
   useEffect(() => {
     const onKey = (e) => {
@@ -310,6 +314,7 @@ export default function AdminPage({ onThemeToggle, theme, showToast }) {
                   <table>
                     <thead>
                       <tr>
+                        <th>Report ID</th>
                         <th>Type</th>
                         <th>Description</th>
                         <th>Location</th>
@@ -321,6 +326,17 @@ export default function AdminPage({ onThemeToggle, theme, showToast }) {
                     <tbody>
                       {filtered.map(report => (
                         <tr key={report.id} id={`row-${report.id}`}>
+                          <td>
+                            <button
+                              onClick={() => handleCopyId(report.id)}
+                              title="Copy ID"
+                              style={{ background: 'none', border: '1px solid var(--border-subtle)', borderRadius: '6px', padding: '2px 8px', cursor: 'pointer', fontSize: '11px', fontFamily: 'monospace', color: 'var(--violet-400)', fontWeight: 700, transition: 'all .15s' }}
+                              onMouseOver={e => { e.currentTarget.style.background = 'rgba(139,92,246,.1)'; e.currentTarget.style.borderColor = 'var(--violet-500)'; }}
+                              onMouseOut={e => { e.currentTarget.style.background = 'none'; e.currentTarget.style.borderColor = 'var(--border-subtle)'; }}
+                            >
+                              {report.id} <i className="fa-solid fa-copy" style={{ fontSize: '9px', marginLeft: '3px', opacity: .6 }}></i>
+                            </button>
+                          </td>
                           <td>
                             <span className={getIssueBadgeClass(report.issueType)}>
                               {report.issueType}
