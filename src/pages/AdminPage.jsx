@@ -120,6 +120,16 @@ export default function AdminPage({ onThemeToggle, theme, showToast }) {
               <div className="stat-trend up"><i className="fa-solid fa-check-double"></i> GPS verified</div>
             </div>
 
+            <div className="stat-card green">
+              <div className="stat-icon green"><i className="fa-solid fa-circle-check"></i></div>
+              <div className="stat-label">Resolved Today</div>
+              <div className="stat-value" style={{ color: 'var(--green-400)' }}>{stats.resolvedToday}</div>
+              <div className="progress-bar">
+                <div className="progress-fill green" style={{ width: Math.min((stats.resolvedToday / 20) * 100, 100) + '%' }}></div>
+              </div>
+              <div className="stat-trend up"><i className="fa-solid fa-thumbs-up"></i> Complaints closed</div>
+            </div>
+
           </div>
 
           {/* MAIN CONTENT AREA: Map + Activity Feed */}
