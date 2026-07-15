@@ -83,6 +83,12 @@ export default function NotFoundPage() {
         <Link to="/admin" className="btn btn-secondary">
           <i className="fa-solid fa-gauge-high"></i> Admin Portal
         </Link>
+        <Link to="/collector" className="btn btn-secondary">
+          <i className="fa-solid fa-truck-fast"></i> Collector App
+        </Link>
+        <Link to="/citizen" className="btn btn-secondary">
+          <i className="fa-solid fa-bullhorn"></i> Citizen Report
+        </Link>
       </div>
 
       {/* Decorative orbs */}
