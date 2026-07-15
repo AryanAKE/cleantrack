@@ -28,6 +28,9 @@ export const ACTIVITY_FEED = [
   { id: 'BIN-4417', location: 'Belapur CBD, Belapur', collectedAt: new Date(Date.now() - 1000 * 60 * 68).toISOString() },
   { id: 'BIN-5521', location: 'Sector 8, Airoli', collectedAt: new Date(Date.now() - 1000 * 60 * 85).toISOString() },
   { id: 'BIN-6630', location: 'Ghansoli Node, Ghansoli', collectedAt: new Date(Date.now() - 1000 * 60 * 102).toISOString() },
+  { id: 'BIN-7741', location: 'Kharghar Central Park', collectedAt: new Date(Date.now() - 1000 * 60 * 4).toISOString() },
+  { id: 'BIN-8852', location: 'Kopar Khairane Depot', collectedAt: new Date(Date.now() - 1000 * 60 * 16).toISOString() },
+  { id: 'BIN-9963', location: 'CBD Belapur Station', collectedAt: new Date(Date.now() - 1000 * 60 * 29).toISOString() },
 ];
 
 export const BINS = [
@@ -38,6 +41,7 @@ export const BINS = [
   { id: 'BIN-4417', location: 'Belapur CBD', area: 'Zone D · Belapur', distance: '3.4 km', status: 'pending' },
   { id: 'BIN-5521', location: 'Sector 8, Airoli', area: 'Zone E · Airoli', distance: '4.0 km', status: 'pending' },
   { id: 'BIN-6630', location: 'Ghansoli Node', area: 'Zone E · Ghansoli', distance: '4.7 km', status: 'pending' },
+  { id: 'BIN-7741', location: 'Kharghar Central Park', area: 'Zone F · Kharghar', distance: '5.3 km', status: 'pending' },
 ];
 
 export const TRUCKS = [
