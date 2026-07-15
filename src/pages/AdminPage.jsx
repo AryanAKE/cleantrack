@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import Sidebar from '../components/Sidebar';
-import { STATS, REPORTS, ACTIVITY_FEED } from '../data/mockData';
+import { STATS, REPORTS, ACTIVITY_FEED, TRUCKS } from '../data/mockData';
 
 function timeAgo(isoString) {
   const diff = Math.round((Date.now() - new Date(isoString).getTime()) / 60000);
@@ -346,6 +346,47 @@ export default function AdminPage({ onThemeToggle, theme, showToast }) {
                 </div>
               );
             })()}
+          </div>
+
+          {/* FLEET STATUS PANEL */}
+          <div className="card" style={{ marginTop: '20px' }}>
+            <div className="section-header">
+              <h2 className="section-title">
+                <i className="fa-solid fa-truck" style={{ color: 'var(--cyan-400)', marginRight: '9px', fontSize: '13px' }}></i>
+                Fleet Status
+              </h2>
+              <span className="badge badge-success">{TRUCKS.filter(t => t.status === 'active').length} Active</span>
+            </div>
+            <div className="table-container">
+              <table>
+                <thead>
+                  <tr>
+                    <th>Truck ID</th>
+                    <th>Driver</th>
+                    <th>Zone</th>
+                    <th>Bins Today</th>
+                    <th>Status</th>
+                    <th>Last Ping</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {TRUCKS.map(truck => (
+                    <tr key={truck.id}>
+                      <td><span className="badge badge-info">{truck.id}</span></td>
+                      <td style={{ fontWeight: 600, fontSize: '13px', color: 'var(--text-primary)' }}>{truck.driver}</td>
+                      <td style={{ fontSize: '12px', color: 'var(--text-secondary)' }}>{truck.zone}</td>
+                      <td style={{ fontSize: '13px', fontWeight: 700, color: 'var(--amber-400)' }}>{truck.binsCollected}</td>
+                      <td>
+                        <span className={`badge ${truck.status === 'active' ? 'badge-success' : 'badge-neutral'}`}>
+                          {truck.status === 'active' ? '🟢 Active' : '⏸ Idle'}
+                        </span>
+                      </td>
+                      <td style={{ fontSize: '11px', color: 'var(--text-tertiary)' }}>{timeAgo(truck.lastPing)}</td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
           </div>
 
         </div>{/* /.page-body */}
