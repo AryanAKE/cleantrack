@@ -13,7 +13,7 @@ export default function Sidebar({ pendingCount, onThemeToggle, theme }) {
         </div>
         <div>
           <div className="sidebar-brand-text">CleanTrack</div>
-          <div className="sidebar-brand-sub">v2.1 · NextGen</div>
+          <div className="sidebar-brand-sub">v2.2 · NextGen</div>
         </div>
       </div>
 
@@ -54,6 +54,15 @@ export default function Sidebar({ pendingCount, onThemeToggle, theme }) {
           {pendingCount > 0 && (
             <span className="badge badge-danger" style={{ marginLeft: 'auto' }}>{pendingCount}</span>
           )}
+        </a>
+
+        <a
+          href="#fleet-status"
+          className="sidebar-nav-item"
+          onClick={e => { e.preventDefault(); document.querySelector('[data-section="fleet"]')?.scrollIntoView({ behavior: 'smooth' }); }}
+        >
+          <i className="fa-solid fa-chart-bar"></i>
+          Analytics
         </a>
 
         <div className="sidebar-section-label">Field</div>
