@@ -6,6 +6,7 @@ const ISSUE_TYPES = [
   { key: 'Missed Collection', icon: 'fa-truck-ramp-box', color: 'var(--pink-400)' },
   { key: 'Damaged Bin', icon: 'fa-trash-can', color: 'var(--cyan-400)' },
   { key: 'Illegal Dumping', icon: 'fa-ban', color: 'var(--red-400)' },
+  { key: 'Stray Animals Near Bin', icon: 'fa-paw', color: 'var(--green-400)' },
 ];
 
 export default function CitizenPage({ onThemeToggle, theme, showToast }) {
