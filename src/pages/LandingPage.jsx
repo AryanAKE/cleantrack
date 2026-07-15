@@ -44,7 +44,8 @@ export default function LandingPage({ onThemeToggle, theme }) {
               </div>
               <div className="login-feature-text">
                 <strong>Live Admin Dashboard</strong>
-                Monitor completion rates, complaints, and truck status.
+                <span style={{ fontSize: '9px', background: 'var(--grad-brand)', color: 'white', padding: '1px 6px', borderRadius: '4px', fontWeight: 700, letterSpacing: '.5px', marginLeft: '6px', verticalAlign: 'middle' }}>NEW</span>
+                <br />Monitor completion rates, complaints, and truck status.
               </div>
             </div>
             <div className="login-feature">
@@ -116,7 +117,7 @@ export default function LandingPage({ onThemeToggle, theme }) {
 
           <p style={{ textAlign: 'center', fontSize: '11px', color: 'var(--text-tertiary)', marginTop: '30px' }}>
             <i className="fa-solid fa-shield-halved" style={{ color: 'var(--violet-500)', marginRight: '5px' }}></i>
-            Secured by CleanTrack &nbsp;·&nbsp; v2.1
+            Secured by CleanTrack &nbsp;·&nbsp; v2.2
           </p>
         </div>
 
